@@ -19,7 +19,7 @@ class Autoload {
 	}
 
 	public function autoload($className) {
-		
+
 		if ( 0 === strpos($className, $this->prefix) ) {
 			$classPath = substr( $className, $this->prefixLength );
 			$classParts = explode( '\\', $classPath );
@@ -27,7 +27,7 @@ class Autoload {
 			$path = $this->baseDirectory.DIRECTORY_SEPARATOR.implode(DIRECTORY_SEPARATOR, $classParts ).'.php';
 
 			if (is_file($path) === true) {
-				require( $path );
+				require_once( $path );
 			}
 		}
 	}

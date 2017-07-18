@@ -43,6 +43,10 @@ class BoolQuery implements QueryInterface {
 
 	public function addQuery(QueryInterface $query, $type = self::MUST ) {
 
+		if( $type === null ) {
+			$type = self::MUST;
+		}
+
 		if(!in_array($type,[self::MUST,self::MUST_NOT,self::SHOULD,self::FILTER])) {
 			throw new \UnexpectedValueException(sprintf('The bool type \'%s\' is not supported', $type));
 		}
@@ -54,7 +58,7 @@ class BoolQuery implements QueryInterface {
 
 		if (count($this->queries) === 1 ) {
 			$query = null;
-
+			
 			if(isset($this->queries[self::MUST]) && count($this->queries[self::MUST]) === 1 ) {
 				$query = reset($this->queries[self::MUST]);
 			} else if(isset($this->queries[self::MUST_NOT]) && count($this->queries[self::MUST_NOT]) === 1 ) {
@@ -65,7 +69,7 @@ class BoolQuery implements QueryInterface {
 				$query = reset($this->queries[self::FILTER]);
 			}
 
-			if(is_null($query) === false) {
+			if(!is_null($query)) {
 				return $query->getBuild();
 			}
 		}

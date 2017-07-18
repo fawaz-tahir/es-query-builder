@@ -7,6 +7,8 @@ use FTahir\ESQuery\ParametersTrait;
 
 class MatchAllQuery implements QueryInterface {
 
+	use ParametersTrait;
+
 	public function __construct(array $parameters = []) {
 		$this->setParameters($parameters);
 	}
