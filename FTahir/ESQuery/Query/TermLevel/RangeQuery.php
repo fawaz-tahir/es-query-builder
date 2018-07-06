@@ -20,7 +20,7 @@ class RangeQuery implements QueryInterface {
 		$this->setParameters($parameters);
 
 		if ($this->hasParameter(self::GT) && $this->hasParameter(self::GTE)) {
-			$this->removeParameter(self::GT);
+			$this->removeParameter(self::GTE);
 		}
 
 		if($this->hasParameter(self::LT) && $this->hasParameter(self::LTE)) {

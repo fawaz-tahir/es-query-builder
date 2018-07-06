@@ -19,11 +19,11 @@ class ExistsQuery implements QueryInterface {
 	public function getBuild() {
 
 		$query = [
-			'field' => $this->field;
+			'field' => $this->field
 		];
 
 		return [
-			$this->getType() => $query;
+			$this->getType() => $query
 		];
 	}
 }

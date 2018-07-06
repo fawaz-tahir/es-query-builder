@@ -39,7 +39,7 @@ class Sort implements QueryInterface {
   }
 
   public function getBuild() {
-    if($this->order) {
+    if($this->order && in_array( $this->order, [self::ASC, self::DESC] )) {
       $this->setParameter('order',$this->order);
     }
 
