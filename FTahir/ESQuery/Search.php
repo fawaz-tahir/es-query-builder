@@ -152,7 +152,6 @@ class Search {
 			$output[ $builder::INDEX ] = $builder->getBuild();
 		}
 
-		pr($output);
-
+		return $output;
 	}
 }

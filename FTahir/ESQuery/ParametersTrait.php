@@ -4,7 +4,7 @@ namespace FTahir\ESQuery;
 
 trait ParametersTrait {
 
-	private $parameters = [];
+  private $parameters = [];
 
 	public function setParameter($name, $value) {
 		$this->parameters[$name] = $value;

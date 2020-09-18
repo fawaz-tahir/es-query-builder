@@ -18,6 +18,14 @@ class RangeQuery implements QueryInterface {
 
 	public function __construct($field, array $parameters = []) {
 		$this->setParameters($parameters);
+		$this->field = (string)$field;
+	}
+
+	public function getType() {
+		return 'range';
+	}
+
+	public function getBuild(){
 
 		if ($this->hasParameter(self::GT) && $this->hasParameter(self::GTE)) {
 			$this->removeParameter(self::GTE);
@@ -27,14 +35,6 @@ class RangeQuery implements QueryInterface {
 			$this->removeParameter(self::LTE);
 		}
 
-		$this->field = (string)$field;
-	}
-
-	public function getType() {
-		return 'range';
-	}
-
-	public function getBuild(){
 		$query = $this->parameters();
 
 		return [
