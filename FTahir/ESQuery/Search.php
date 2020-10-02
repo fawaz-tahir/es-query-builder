@@ -125,9 +125,17 @@ class Search {
 
 		return $this;
 
-	}
+  }
+  
+  public function getQuery() {
+    $output = [];
 
+    foreach( $this->builders as $builder ) {
+			$output[ $builder::INDEX ] = $builder->getBuild();
+		}
 
+		return $output;
+  }
 
 	public function getBuild() {
 
@@ -146,12 +154,8 @@ class Search {
 			if($this->$key !== null) {
 				$output[$index] = $this->$key;
 			}
-		}
-
-		foreach( $this->builders as $builder ) {
-			$output[ $builder::INDEX ] = $builder->getBuild();
-		}
-
-		return $output;
+    }
+    
+    return array_merge($output, $this->getQuery());
 	}
 }

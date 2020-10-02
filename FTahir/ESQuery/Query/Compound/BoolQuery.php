@@ -56,25 +56,17 @@ class BoolQuery implements QueryInterface {
 
 	public function getBuild() {
 
-		if (count($this->queries) === 1 ) {
-			$query = null;
+		// if (count($this->queries) === 1 ) {
+		// 	$query = null;
 
-			if(isset($this->queries[self::MUST]) && count($this->queries[self::MUST]) === 1 ) {
-				$query = reset($this->queries[self::MUST]);
-			}
+		// 	if(isset($this->queries[self::MUST]) && count($this->queries[self::MUST]) === 1 ) {
+		// 		$query = reset($this->queries[self::MUST]);
+		// 	}
 
-			/* else if(isset($this->queries[self::MUST_NOT]) && count($this->queries[self::MUST_NOT]) === 1 ) {
-				$query = reset($this->queries[self::MUST_NOT]);
-			} else if(isset($this->queries[self::SHOULD]) && count($this->queries[self::SHOULD]) === 1 ) {
-				$query = reset($this->queries[self::SHOULD]);
-			} else if(isset($this->queries[self::FILTER]) && count($this->queries[self::FILTER]) === 1 ) {
-				$query = reset($this->queries[self::FILTER]);
-			}*/
-
-			if(!is_null($query)) {
-				return $query->getBuild();
-			}
-		}
+		// 	if(!is_null($query)) {
+		// 		return $query->getBuild();
+		// 	}
+		// }
 
 		$queries = [];
 
